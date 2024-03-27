@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Main page";
+    Layout = "_Layout";
+}
+
+@await Html.PartialAsync("LocationForm")
+
+<form method="post" asp-action="DeleteAllLocations" asp-controller="Main" id="form-tracked">
+    <div >
+        <div id="title-tracked">Tracked locations</div>
+        <button type="submit" id="deleteLocations">
+            <u>Remove all</u>
+        </button>
+    </div>
+</form>
+
+@await Html.PartialAsync("RenderWidgets")

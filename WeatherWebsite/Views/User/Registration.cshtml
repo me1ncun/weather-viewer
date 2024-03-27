@@ -1,0 +1,52 @@
+﻿@using WeatherFrontend.DAL.Models
+@model User
+@{
+    ViewData["Title"] = "Registration page";
+}
+@if (Model == null)
+{
+    <div class="registration-form">
+        <form id="registation" method="post" asp-controller="User" asp-action="Registration">
+            <div class="flex-container">
+                <div id="title"><b>Registration</b></div>
+                <div class="flex-box">
+                    <label asp-for="Login">Login:</label><br>
+                    <input asp-for="Login" type="text" id="player-login-registration" placeholder="sample@example.com" name="login">
+                    <br>
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+                <div class="flex-box">
+                    <label asp-for="Password">Password:</label><br>
+                    <input asp-for="Password" type="password" id="player-password-registration" placeholder="" name="password">
+                    <br>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="flex-box">
+                    <label asp-for="RepeatedPassword">Repeat password:</label><br>
+                    <input asp-for="RepeatedPassword" type="password" id="player-password-repeat" placeholder="" name="repeatedpassword">
+                    <br>
+                    <span asp-validation-for="RepeatedPassword" class="text-danger"></span>
+                </div>
+                <div class="start-button-div">
+                    <button class="btn btn-primary" id="start-registration" style="width: 188px;" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <div class="flex-box-success-registration">
+        <div class="font-success">Успешная регистрация!</div>
+        <div class="font-success">Ваш аккаунт создан</div>
+        <div>
+            <button class="btn btn-primary" id="login-in-account" type="button" style="width: 230px;">Sign in to your account</button>
+        </div>
+    </div>
+}
+<script>
+    var button = document.getElementById("login-in-account");
+    button.addEventListener("click", function (e) {
+        window.location.href = '/User/Login';
+    });
+</script>

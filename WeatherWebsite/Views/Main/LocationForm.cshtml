@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Search location";
+}
+
+<div class="title-main">
+    <div id="title-main">Search bar</div>
+    <div style="text-align: center;">Enter the name of your city</div>
+</div>
+<div class="weather-form">
+    <form id="weather-form" method="post" asp-controller="Main" asp-action="GetLocations">
+        <div class="flex-container-search">
+            <div class="flex-box-search">
+                <input type="text" id="location" placeholder="Location" name="LocationName">
+            </div>
+            <div class="start-button-div" id="search-location">
+                <button class="btn btn-primary" id="start-search" style="width: 110px;" type="submit">Search</button>
+            </div>
+            <div class=""> </div>
+        </div>
+    </form>
+</div>

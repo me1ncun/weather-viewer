@@ -1,0 +1,16 @@
+﻿@model WeatherBackend.DTO.Base.CityDTO;
+@{
+    ViewData["Title"] = "Get all locations by name";
+}
+
+@await Html.PartialAsync("LocationForm")
+
+<div class="container py-2" id="search-locations">
+    <div class="row mb-5">
+        <div class="col-md-8 col-xl-6 text-center mx-auto">
+            <h2>Search results: @Model.Sys.Country</h2>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("GetAllCities")

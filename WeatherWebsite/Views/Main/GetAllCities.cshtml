@@ -1,0 +1,31 @@
+﻿@using WeatherFrontend.Models
+@model WeatherBackend.DTO.Base.CityDTO
+@{
+    ViewData["Title"] = "Get all locations by name";
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-6">
+        @for (int i = 0; i < Model.LocationDto.Count; i++)
+        {
+            <form method="post" asp-action="AddLocation" asp-controller="Main">
+                <div class="d-flex align-items-center justify-content-between border border-grey mt-2 p-3">
+                    <div>
+                        <div class="font-weight-bold" id="location-info">
+                            @Model.LocationDto[i].Name, @Model.LocationDto[i].Country, @Model.LocationDto[i].State
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center" id="coordinates">
+                        <span class="small-gray-text">@Model.LocationDto[i].Latitude, @Model.LocationDto[i].Longtitude</span>
+                        
+                        <input type="hidden" name="Name" value="@Model.LocationDto[i].Name"/>
+                        <input type="hidden" name="Latitude" value="@Model.LocationDto[i].Latitude"/>
+                        <input type="hidden" name="Longtitude" value="@Model.LocationDto[i].Longtitude"/>
+
+                        <button class="btn btn-primary btn-secondary" style="margin-left: 10px;" id="logout-reference" type="submit">Follow</button>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+</div>
