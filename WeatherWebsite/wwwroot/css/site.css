@@ -1,0 +1,180 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.weather-logo {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+
+.website-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form, .login-form {
+    display: flex;
+    justify-content: center;
+}
+
+#start-registration, #start-login {
+    margin-top: 15px;
+}
+
+.flex-box {
+    margin-top: 10px;
+}
+
+.flex-box input {
+    width: 188px;
+}
+
+#title {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.title-main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#title-main {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.weather-form {
+    margin-top: 30px;
+}
+
+.flex-container-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 37.6px;
+}
+
+.flex-box-search {
+    margin-right: 10px;
+}
+
+.flex-container-search input {
+    width: 250px;
+    height: 37.6px;
+}
+
+.flex-container-search button {
+    height: 37.6px;
+}
+
+.flex-box-success-registration {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flex-box-success-registration > div {
+    text-align: center;
+}
+
+#login-in-account {
+    margin-top: 10px;
+}
+
+.font-success{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.tracked-locations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin-top: 40px;
+}
+
+    .tracked-locations > div {
+        text-align: center; 
+    }
+#form-tracked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title-tracked {
+    margin-bottom: 10px;
+}
+
+#deleteLocations {
+    color: red;
+    width: 120px;
+    margin-left: 20px;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+#title-tracked {
+/*    text-align: center;*/
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#title-main{
+    text-align: center;
+}
+
+#search-locations{
+    margin-top: 30px;
+}
+
+.flex-container-cities{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.flex-container-cities .flex-box{
+    border-radius: 3px;
+}
+
+#coordinates{
+    font-size: 14px;
+    color: #6c757d;
+}
+
+#location-info{
+    font-weight: bold;
+}
