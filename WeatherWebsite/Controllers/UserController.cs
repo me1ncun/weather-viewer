@@ -55,9 +55,9 @@ namespace WeatherFrontend.Controllers
             }
             return View();
         }
-        
-        [HttpPost]
-        public async Task<IActionResult> Logout()
+
+        [HttpGet]
+        public IActionResult Logout()
         {
             try
             {
