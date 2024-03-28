@@ -1,4 +1,5 @@
 using System.Configuration;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using WeatherBackend.Database.Services;
 using WeatherFrontend.BL.Interfaces;
