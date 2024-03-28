@@ -67,5 +67,30 @@ namespace WeatherBackend.Database.Services
                 throw ex;
             }
         }
+        
+        public async Task<WeatherForecastResponse> GetHourlyForecast(float latitude, float longtitude)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync($"{"https://api.openweathermap.org/data/2.5/forecast"}?lat={latitude}&lon={longtitude}&appid={Api_key}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = await response.Content.ReadAsStringAsync();
+                    var hourlyForecast = JsonConvert.DeserializeObject<WeatherForecastResponse>(data);
+                    return hourlyForecast;
+                }
+                else
+                {
+                    // Handle error response (e.g., log the error, throw a custom exception, etc.)
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions
+                throw ex;
+            }
+        }
     }
 }
