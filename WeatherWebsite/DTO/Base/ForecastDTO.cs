@@ -7,6 +7,7 @@ namespace WeatherBackend.DTO.Base
 {
     public class ForecastDTO
     {
+        public Coord coord { get; set; }
         public Main main { get; set; }
         public int visibility { get; set; }
         public Wind wind { get; set; }
