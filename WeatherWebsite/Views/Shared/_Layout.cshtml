@@ -11,6 +11,45 @@
 </head>
 <body>
 <header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 d-flex justify-content-end">
+        <div class="container-fluid">
+            <a href="/Main">
+                <img class="weather-logo" src="~/Photo/weather-logo.png"/>
+            </a>
+            <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">WeatherViewer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
+                    </li>
+                    @if (!string.IsNullOrEmpty(loggedInUser))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="users-email" style="color: black;">Hello, @loggedInUser</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Logout" type="submit">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/User/Registration" id="registration-reference" style="cursor: pointer;">Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/User/Login" id="login-reference" style="cursor: pointer;">Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+@*<header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -53,7 +92,7 @@
             </div>
         </div>
     </nav>
-</header>
+</header>*@
 
 <div class="container">
     @RenderBody()
