@@ -29,7 +29,14 @@ namespace WeatherFrontend.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var userId = Convert.ToInt32(HttpContext.Session.GetString("LoggedInUserId"));
+            var locations = _userService.GetLocations(userId);
+            List<ForecastDTO> weatherList = new List<ForecastDTO>();
+            foreach (var location in locations)
+            {
+                weatherList.Add(_weatherService.GetWeather(location.Latitude, location.Longtitude).Result);
+            }
+            return View(weatherList);
         }
 
         [HttpPost("Main/GetLocations")]
@@ -118,46 +125,6 @@ namespace WeatherFrontend.Controllers
             catch (Exception ex)
             {
                 return null;
-            }
-        }
-
-        /*[HttpGet]
-        public IActionResult RenderWidgets()
-        {
-            var userId = Convert.ToInt32(HttpContext.Session.GetString("LoggedInUserId"));
-            
-            var locations = _userService.GetLocations(userId);
-
-            if (locations != null)
-            {
-                return View(locations);
-            }
-            else
-            {
-                return RedirectToAction("Error","User");
-            }
-        }*/
-        
-
-        [HttpGet]
-        public async Task<IActionResult> RenderWidgets()
-        {
-            if (int.TryParse(HttpContext.Session.GetString("LoggedInUserId"), out int userId))
-            {
-                var locations = _userService.GetLocations(userId);
-                /*
-                List<ForecastDTO> list = new List<ForecastDTO>();
-                foreach (var location in locations)
-                {
-                    list.Add(_weatherService.GetWeather(location.Latitude, location.Longtitude).Result);
-                }
-                */
-        
-                return View(locations);
-            }
-            else
-            {
-                return View(null); // Вернуть пустую модель, если userId не удалось получить
             }
         }
     }
