@@ -1,32 +1,27 @@
-﻿
+﻿@model WeatherBackend.DTO.Base.WeatherForecastResponse
 @{
     ViewData["Title"] = "Get weather in location";
 }
 
-<div class="container py-4">
-  <div class="row mb-5">
-    <div class="col-md-8 col-xl-6 text-center mx-auto">
-      <h2>Weather forecast</h2>
-      <a href="/Main" class="link-primary" type="button">Return</a>
-    </div>
-  </div>
-  <h5 class="text-center mb-4">Hourly forecast</h5>
-  <div class="row">
-    <!-- Hourly forecast -->
-    <div class="col-md-8 col-xl-6 mx-auto">
-      <ol class="list-group mb-4">
-        @foreach (var value in Model)
-        {
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">@value.Month</div>
-              <p style="margin-bottom: 0;">
-                @value.Temp<span>°C</span>, @value.Description
-              </p>
+@if (Model != null)
+{
+    <div>Weather forecast</div>
+    <a href="/Main" class="link-primary" type="button">Return</a>
+    <div>Hourly forecast</div>
+    @foreach (var forecast in Model.List)
+    {
+        <div class="d-flex align-items-center justify-content-between border border-grey mt-2 p-3">
+            <div>
+                <div class="font-weight-bold" id="location-info">
+                    <div>@forecast.dt_txt</div>
+                    <div>@($"{forecast.main.temp - 273.15:0.00}°C {forecast.weather.Last().Description}" )</div>
+                    
+                </div>
             </div>
-          </li>
-        }
-      </ol>
-    </div>
-  </div>
-</div>
+        </div>
+    }
+}
+else
+{
+    <div>Can't see hour forecast</div>
+}
