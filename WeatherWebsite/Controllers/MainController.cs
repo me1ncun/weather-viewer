@@ -34,8 +34,9 @@ namespace WeatherFrontend.Controllers
             List<ForecastDTO> weatherList = new List<ForecastDTO>();
             foreach (var location in locations)
             {
-                weatherList.Add(_weatherService.GetWeather(location.Latitude, location.Longtitude).Result);
+                weatherList.Add(_weatherService.GetWeather(location.Name, location.Latitude, location.Longtitude).Result);
             }
+
             return View(weatherList);
         }
 
@@ -48,8 +49,7 @@ namespace WeatherFrontend.Controllers
             cityDto.LocationDto = await GetAllCities(LocationName);
             return View(cityDto);
         }
-
-
+        
         [HttpPost]
         public async Task<IActionResult> DeleteAllLocations()
         {
@@ -67,6 +67,20 @@ namespace WeatherFrontend.Controllers
                 {
                     return RedirectToAction("Error", "User");
                 }
+            }
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> DeleteLocation([FromForm] CityViewModel request)
+        {
+            using (var connection = AppDbContext.CreateConnection())
+            {
+                await connection.OpenAsync();
+                
+                var userId = Convert.ToInt32(HttpContext.Session.GetString("LoggedInUserId"));
+                    string deleteQuery = "DELETE FROM Locations WHERE Name = @Name AND UserId = @Id;";
+                    await connection.ExecuteAsync(deleteQuery,new { Name = request.Name, Id = userId});
+                    return RedirectToAction("Index", "Main");
             }
         }
 
@@ -87,23 +101,25 @@ namespace WeatherFrontend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> WeatherForecast(float latitude, float longtitude)
+        public IActionResult WeatherForecast() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> WeatherForecast([FromForm] CityViewModel request)
         {
-            try
+            try{
+            var weatherData = await _weatherService.GetHourlyForecast(request.Latitude, request.Longtitude);
+            if (weatherData != null)
             {
-                var weatherData = await _weatherService.GetWeather(latitude, longtitude);
-                if (weatherData != null)
-                {
-                    return View(weatherData);
-                }
-                else
-                {
-                    return NotFound();
-                }
+                return View(weatherData);
+            }
+            else
+            {
+                return NotFound();
+            }
             }
             catch (Exception ex)
             {
-                return new JsonResult(ex);
+                return NotFound();
             }
         }
 
