@@ -2,6 +2,10 @@
 
 Это ASP.NET Core MVC приложение, предоставляющее информацию о текущей погоде и прогнозах с помощью OpenWeatherAPI.
 
+![photo_1.jpg](Screenshots/weather.jpg)
+![photo_2.jpg](Screenshots/search.jpg)
+![photo_2.jpg](Screenshots/forecast.jpg)
+
 # Инструменты
 
 <ul>
@@ -54,5 +58,7 @@
 
 <h3>Настройка конфигурации</h3>
 Для использования OpenWeatherMap API необходимо получить API ключ. Зарегистрируйтесь на https://openweathermap.org/api и добавьте свой ключ в файле appsettings.json:
-<br>`"ApiKey": "your api key",`
+<br>
+```"ApiKey": "your api key",
+
 
