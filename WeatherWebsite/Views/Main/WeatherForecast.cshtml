@@ -5,23 +5,41 @@
 
 @if (Model != null)
 {
-    <div>Weather forecast</div>
-    <a href="/Main" class="link-primary" type="button">Return</a>
-    <div>Hourly forecast</div>
+    <div class="d-flex justify-content-center flex-column text-center">
+        <div style="font-weight: bold; font-size: 28px;">Weather forecast</div>
+        <a href="/Main" class="link-primary" type="button">Return</a>
+        <div style="margin-top: 40px; margin-bottom: 15px; font-weight: bold; font-size: 20px;">Hourly forecast</div>
+    </div>
     @foreach (var forecast in Model.List)
     {
-        <div class="d-flex align-items-center justify-content-between border border-grey mt-2 p-3">
+        <div class="d-flex justify-content-center">
+        <div class="d-flex align-items-center justify-content-between border border-grey p-3 w-50">
             <div>
-                <div class="font-weight-bold" id="location-info">
-                    <div>@forecast.dt_txt</div>
-                    <div>@($"{forecast.main.temp - 273.15:0.00}°C {forecast.weather.Last().Description}" )</div>
-                    
+                <div id="location-info">
+                    <div class="font-weight-bold" style="font-weight: bold;">@forecast.dt_txt</div>
+                    <div class="font-weight-normal">@($"{forecast.main.temp - 273.15:0.00}°C, {forecast.weather.Last().Description}")</div>
+
                 </div>
             </div>
+            @switch (forecast.weather.Last().Description)
+            {
+                default:
+                    <img class="weather-logo" src="~/Photo/weather-icons/overcast.png"/>
+                    break;
+                case "clear sky":
+                    <img class="weather-logo" src="~/Photo/weather-icons/sunny.png"/>
+                    break;
+                case "overcast clouds" or "few clouds" or "broken clouds" or "scattered clouds":<img class="weather-logo" src="~/Photo/weather-icons/clouds.png"/>
+                    break;
+                case "light rain" or "moderate rain":
+                    <img class="weather-logo" src="~/Photo/weather-icons/rain.png"/>
+                    break;
+            }
+        </div>
         </div>
     }
 }
 else
 {
-    <div>Can't see hour forecast</div>
+    <div>Error, while trying to get hourly forecast</div>
 }
