@@ -16,8 +16,10 @@ namespace WeatherFrontend.Controllers
         {
             _userService = userService;
         }
+        [HttpGet]
         public IActionResult Login() => View();
-
+        
+        [HttpGet]
         public IActionResult Registration() => View();
 
         [HttpPost]
