@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using WeatherBackend.Helpers;
 using WeatherFrontend.BL.Interfaces;
 using WeatherFrontend.DAL.Interfaces;
 using WeatherFrontend.DAL.Models;
@@ -16,8 +17,8 @@ namespace WeatherFrontend.BL.Implementation
         }
         public int? Authenticate(string login, string password)
         {
-            string encpass = Encrypt(password);
-            foreach (User user in userRepository.FindByLoginAndPass(login, password))
+            string encpass = HashPasswordHelper.HashPassword(password);
+            foreach (User user in userRepository.FindByLoginAndPass(login, encpass))
             {
                 if (user.Password == encpass)
                 {
@@ -29,7 +30,7 @@ namespace WeatherFrontend.BL.Implementation
 
         public void Register(string login, string password)
         {
-            userRepository.Register(login, password);
+            userRepository.Register(login, HashPasswordHelper.HashPassword(password));
         }
 
         public User GetUserById(int id)
@@ -40,11 +41,6 @@ namespace WeatherFrontend.BL.Implementation
         public User GetUser(string login, string password)
         {
             return userRepository.FindByLoginAndPass(login, password).FirstOrDefault();
-        }
-
-        public string Encrypt(string password)
-        {
-            return password;
         }
 
         public int GetUsersId(string login, string password)
