@@ -13,7 +13,9 @@
                     <div>
                         <div class="font-weight-bold" id="location-info">
                             @Model.LocationDto[i].Name, @Model.LocationDto[i].Country, @Model.LocationDto[i].State
+                            <img width="25px" height="25px" src="https://flagsapi.com/@Model.LocationDto[i].Country/flat/64.png">
                         </div>
+                        
                     </div>
                     <div class="d-flex flex-row align-items-center" id="coordinates">
                         <span class="small-gray-text">@Model.LocationDto[i].Latitude, @Model.LocationDto[i].Longtitude</span>
