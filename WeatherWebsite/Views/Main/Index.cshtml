@@ -1,17 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Main page";
     Layout = "_Layout";
+    var loggedInUser = Context.Request.HttpContext.Session.GetString("LoggedInUser");
 }
+@if (string.IsNullOrEmpty(loggedInUser))
+{
+    <script>
+        window.location.href = "/User/Login";
+    </script>
+}
+else
+{
+    @await Html.PartialAsync("LocationForm")
 
-@await Html.PartialAsync("LocationForm")
+    <form method="post" asp-action="DeleteAllLocations" asp-controller="Main" id="form-tracked">
+        <div >
+            <div id="title-tracked">Tracked locations</div>
+            <button type="submit" id="deleteLocations">
+                <u>Remove all</u>
+            </button>
+        </div>
+    </form>
 
-<form method="post" asp-action="DeleteAllLocations" asp-controller="Main" id="form-tracked">
-    <div >
-        <div id="title-tracked">Tracked locations</div>
-        <button type="submit" id="deleteLocations">
-            <u>Remove all</u>
-        </button>
-    </div>
-</form>
-
-@Html.Partial("RenderWidgets")
+    @Html.Partial("RenderWidgets")
+}
