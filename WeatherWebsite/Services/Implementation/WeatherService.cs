@@ -33,18 +33,16 @@ namespace WeatherBackend.Database.Services
                 }
                 else
                 {
-                    // Handle error response (e.g., log the error, throw a custom exception, etc.)
                     return null;
                 }
             }
             catch (Exception ex)
             {
-                // Handle other exceptions
                 throw ex;
             }
         }
 
-        public async Task<ForecastDTO> GetWeather(float latitude, float longtitude)
+        public async Task<ForecastDTO> GetWeather(string CorrectName, float latitude, float longtitude)
         {
             try
             {
@@ -53,17 +51,16 @@ namespace WeatherBackend.Database.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var weatherData = await response.Content.ReadAsAsync<ForecastDTO>();
+                    weatherData.CorrectName = CorrectName;
                     return weatherData;
                 }
                 else
                 {
-                    // Handle error response (e.g., log the error, throw a custom exception, etc.)
                     return null;
                 }
             }
             catch (Exception ex)
             {
-                // Handle other exceptions
                 throw ex;
             }
         }
@@ -82,13 +79,11 @@ namespace WeatherBackend.Database.Services
                 }
                 else
                 {
-                    // Handle error response (e.g., log the error, throw a custom exception, etc.)
                     return null;
                 }
             }
             catch (Exception ex)
             {
-                // Handle other exceptions
                 throw ex;
             }
         }
