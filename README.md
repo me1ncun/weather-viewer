@@ -57,10 +57,7 @@
 # Установка
 
 <h3>Настройка конфигурации</h3>
-Для использования OpenWeatherMap API необходимо получить API ключ. Зарегистрируйтесь на https://openweathermap.org/api и добавьте свой ключ в файле appsettings.json:
-```
-npm run watch
-```
+Для использования OpenWeatherMap API необходимо получить API ключ. Зарегистрируйтесь на https://openweathermap.org/api и добавьте свой ключ в файле appsettings.json:</h3>
 ```
 "ApiKey": "your api key",
 ```
