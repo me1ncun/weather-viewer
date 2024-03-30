@@ -14,5 +14,7 @@ namespace WeatherBackend.DTO.Base
         public Clouds clouds { get; set; }
         public Sys sys { get; set; }
         public string name { get; set; }
+        public string CorrectName { get; set; }
+        public List<Weather> weather { get; set; }
     }
 }
