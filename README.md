@@ -1,4 +1,4 @@
-# weather-viewer
+# Weather-Viewer
 
 Это ASP.NET Core MVC приложение, предоставляющее информацию о текущей погоде и прогнозах с помощью OpenWeatherAPI.
 
