@@ -1,7 +1,7 @@
-﻿using WeatherBackend.DTO.Inserted;
+﻿using WeatherFrontend.DTO.Inserted;
 using WeatherFrontend.Models;
 
-namespace WeatherBackend.DTO.Base;
+namespace WeatherFrontend.DTO.Base;
 
 public class CityDTO
 {

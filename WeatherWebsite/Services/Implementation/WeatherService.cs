@@ -1,9 +1,7 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using MySqlX.XDevAPI;
-using Newtonsoft.Json;
-using WeatherBackend.DTO.Base;
+﻿using Newtonsoft.Json;
+using WeatherFrontend.DTO.Base;
 
-namespace WeatherBackend.Database.Services
+namespace WeatherFrontend.Database.Services
 {
     public class WeatherService
     {

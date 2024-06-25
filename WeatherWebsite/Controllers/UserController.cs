@@ -46,18 +46,24 @@ namespace WeatherFrontend.Controllers
         [HttpPost]
         public IActionResult Registration(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            var userExists = _userService.GetUser(model.Login);
+
+            if (userExists != null)
             {
-                _userService.Register(model.Login, model.Password);
-                var user = _userService.GetUser(model.Login, model.Password);
-                if (user != null)
-                {
-                    return View(user);
-                }
+                return RedirectToAction("Error");
             }
+
+            _userService.Register(model.Login, model.Password);
+            var user = _userService.GetUser(model.Login);
+    
+            if (user != null)
+            {
+                return View(user);
+            }
+
             return View();
         }
-
+        
         [HttpGet]
         public IActionResult Logout()
         {

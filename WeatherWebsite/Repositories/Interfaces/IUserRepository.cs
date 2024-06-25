@@ -5,6 +5,7 @@ namespace WeatherFrontend.DAL.Interfaces
 {
     public interface IUserRepository
     {
+        public IEnumerable<User> FindByLoginAndPass(string login);
         public IEnumerable<User> FindByLoginAndPass(string login, string password);
         public User FindById(int id);
         public void Register(string login, string password);

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using WeatherBackend.DTO.Inserted;
 
 namespace WeatherFrontend.Models;
 

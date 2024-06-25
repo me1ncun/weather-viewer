@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherBackend.DTO.Inserted
+namespace WeatherFrontend.DTO.Inserted
 {
     public class Coord
     {

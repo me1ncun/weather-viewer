@@ -1,8 +1,8 @@
 ﻿using Dapper;
-using WeatherBackend.Helpers;
 using WeatherFrontend.BL.Interfaces;
 using WeatherFrontend.DAL.Interfaces;
 using WeatherFrontend.DAL.Models;
+using WeatherFrontend.Helpers;
 using WeatherFrontend.Models;
 
 namespace WeatherFrontend.BL.Implementation
@@ -38,9 +38,9 @@ namespace WeatherFrontend.BL.Implementation
             return userRepository.FindById(id);
         }
 
-        public User GetUser(string login, string password)
+        public User GetUser(string login)
         {
-            return userRepository.FindByLoginAndPass(login, password).FirstOrDefault();
+            return userRepository.FindByLoginAndPass(login).FirstOrDefault();
         }
 
         public int GetUsersId(string login, string password)

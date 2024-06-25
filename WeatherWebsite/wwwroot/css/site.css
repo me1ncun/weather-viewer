@@ -149,7 +149,6 @@ body {
 }
 
 #title-tracked {
-/*    text-align: center;*/
     font-weight: 600;
 }
 
@@ -175,18 +174,18 @@ body {
 .close-button {
     background-color: transparent;
     border: none;
-    color: red; /* Цвет крестика */
+    color: red;
     font-size: 24px;
     cursor: pointer;
     margin-bottom:20px;
 }
 
 .close-button:hover {
-    color: #ff0000; /* Изменяем цвет при наведении */
+    color: #ff0000;
 }
 
 .close-button:focus {
-    outline: none; /* Убираем рамку фокуса */
+    outline: none;
 }
 
 .weather-tracked{

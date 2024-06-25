@@ -1,17 +1,24 @@
+using System.ComponentModel;
 using System.Configuration;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using WeatherBackend.Database.Services;
+using Microsoft.EntityFrameworkCore;
 using WeatherFrontend.BL.Interfaces;
 using WeatherFrontend.DAL.Implementation;
 using WeatherFrontend.DAL.Interfaces;
 using WeatherFrontend.DAL.Models;
+using WeatherFrontend.Database.Services;
+using WeatherFrontend.Extensions;
 using UserService = WeatherFrontend.BL.Implementation.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Database")));
 
 builder.Services.AddTransient<WeatherService>(provider =>
 {
@@ -43,7 +50,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.ApplyMigrations();
+
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();

@@ -1,4 +1,4 @@
-﻿namespace WeatherBackend.DTO.Base;
+﻿namespace WeatherFrontend.DTO.Base;
 
 public class WeatherForecastResponse
 {

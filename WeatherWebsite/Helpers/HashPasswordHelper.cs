@@ -1,8 +1,7 @@
-﻿using Org.BouncyCastle.Crypto.Generators;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace WeatherBackend.Helpers
+namespace WeatherFrontend.Helpers
 {
     public static class HashPasswordHelper
     {

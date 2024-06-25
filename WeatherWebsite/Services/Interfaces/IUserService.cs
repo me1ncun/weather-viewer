@@ -8,7 +8,7 @@ namespace WeatherFrontend.BL.Interfaces
         public int? Authenticate(string login, string password);
         public User GetUserById(int id);
         public void Register(string login, string password);
-        public User GetUser(string login, string password);
+        public User GetUser(string login);
         public int GetUsersId(string login, string password);
         public void AddLocation(CityViewModel request, int userId);
         public IEnumerable<Location> GetLocations(int userId);

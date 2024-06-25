@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using WeatherBackend.DTO.Inserted;
 
-namespace WeatherBackend.DTO.Base
+namespace WeatherFrontend.DTO.Base
 {
     public class LocationDTO
     {

@@ -12,7 +12,8 @@
 <li>.NET 8.0</li>
 <li>ASP.NET Core MVC</li>
 <li>Dapper</li>
-<li>Microsoft SQL Server</li>
+<li>Docker</li>
+<li>PostgreSQL</li>
 </ul>
 
 # Функции
