@@ -15,6 +15,7 @@ http://51.20.86.94:8080/
 <li>Dapper</li>
 <li>Docker</li>
 <li>PostgreSQL</li>
+<li>AWS EC2 (Deploy)</li>
 </ul>
 
 # Функции
